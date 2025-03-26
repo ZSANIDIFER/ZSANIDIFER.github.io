@@ -1,0 +1,190 @@
+/*   THIS IS THE HOME PAGE       */
+body {
+    background: rgb(48, 3, 65);
+    color: rgb(255, 255, 255);
+    padding: 15px;
+    font-family: 'Franklin Gothic Medium';
+}
+#all-contents {
+  max-width: 800px;
+    margin: auto;
+}
+
+/* navigation menu */
+nav {
+    background: rgb(68, 18, 87);
+   margin: 0 auto;
+   margin-bottom: 20px;
+    display: flex;
+    padding: 10px;
+    border-style:solid;
+    border-width: 2px;
+    border-color:rgb(247, 247, 247);
+}
+h1 {
+    display: flex;
+    align-items: center;
+    color: white;
+    flex: 1;
+    margin: 0;
+}
+#nav-ul {
+    list-style-image: none;
+}
+.nav-li {
+    display: inline-block;
+    padding: 0 10px;
+    border-style:solid;
+    border-width:1px;
+    border-color:#eee;
+    border-radius: 5px;
+}
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* main container area beneath menu */
+main {
+    background: rgb(83, 3, 93);
+    display: flex;
+    border-style:solid;
+    border-width:2px;
+    border-color:#ffffff;
+}
+.sidebar {
+    margin-right: 25px;
+    padding: 10px;
+}
+.sidebar-img {
+    width: 200px;
+    height: 200px;
+}
+.content {
+    flex: 1;
+    padding: 15px;
+}
+
+/* portfolio styles */
+#interests {
+    border: 4px rgb(219, 196, 196) ridge;
+    padding: 8px;
+}
+h2, h3 {
+    margin: 0px;
+}
+/*   THIS IS THE PORTFOLIO       */
+         .content h1 {
+            color: rgb(255, 255, 255);
+        }
+
+        #portfolio {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        #portfolio li {
+            background: #810594;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        #portfolio li:hover {
+            background: #eee;
+        }
+
+        #portfolio a {
+            text-decoration: none;
+            color: #ffffff;
+        }
+        .button {
+            border-style:solid;
+            color: rgb(245, 239, 239);
+            padding: 5px 8px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+          }
+          .button1 {background-color: #5a0073;}
+          .button1:hover {
+            background-color: #e7e5e8;
+            color: rgb(255, 255, 255);
+          }
+          .content h1 {
+            color: black;
+          }
+          
+          #portfolio {
+            list-style-type: none;
+            padding-left: 0;
+          }
+          
+          #portfolio li {
+            background: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+          }
+          
+          #portfolio li:hover {
+            background: #eee;
+          }
+          
+          #portfolio a {
+            text-decoration: none;
+            color: #454545;
+          }
+/*   THIS IS THE MOBILE SECTION       */
+          @media screen and (min-width: 120px) and (max-width: 1080px) {
+            main {
+              height: 100ch;
+              zoom: 1.5;
+              display: grid;
+            }
+          
+            h1 {
+              font-size: 44px;
+            }
+          
+            h2 {
+              font-size: 42px;
+            }
+          
+            h3 {
+              font-size: 36px;
+            }
+          
+            #all-contents {
+              height: 100ch;
+              margin: none;
+            }
+          
+            a {
+              font-size: 42px;
+            }
+          
+            .sidebar {
+              margin-right: 0px;
+              justify-content: center;
+              align-items: center;
+            }
+          
+            .sidebar-img {
+              width: 100%;
+            }
+          
+            p,
+            li {
+              font-size: 24px;
+            }
+          
+            .content {
+              align-content: center;
+              justify-content: center;
+            }
+          }
+          
