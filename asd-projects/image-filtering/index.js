@@ -1,49 +1,93 @@
-// This is a small program. There are only two sections. This first section is what runs
-// as soon as the page loads.
-$(document).ready(function () {
-  render($("#display"), image);
-  $("#apply").on("click", applyAndRender);
-  $("#reset").on("click", resetAndRender);
-});
+/* IMPORTANT VALUES
 
-/////////////////////////////////////////////////////////
-//////// event handler functions are below here /////////
-/////////////////////////////////////////////////////////
+This section contains a list of all variables predefined for you to use (that you will need)
 
-// this function resets the image to its original value; do not change this function
-function resetAndRender() {
-  reset();
-  render($("#display"), image);
+The CSS ids you will work with are:
+
+1. bubbleCounter -- the container for the counter text for bubble sort
+2. quickCounter  -- the container for the counter text for quick sort
+
+*/
+
+///////////////////////////////////////////////////////////////////////
+/////////////////////// YOUR WORK GOES BELOW HERE /////////////////////
+///////////////////////////////////////////////////////////////////////
+
+// TODO 2: Implement bubbleSort
+async function bubbleSort(array){
+    for(var i = 0; i < array.length - 1; i++){
+        for(var j = array.length - 1; j >= i + 1; j--){
+            if(array[j].value < array[j - 1].value){
+                swap(array, j, j - 1)
+                updateCounter(bubbleCounter);
+                await sleep();
+            }
+        }
+    }
 }
 
-// this function applies the filters to the image and is where you should call
-// all of your apply functions
-function applyAndRender() {
-  // Multiple TODOs: Call your apply function(s) here
-
-  
-
-  // do not change the below line of code
-  render($("#display"), image);
+// TODO 3: Implement quickSort
+async function quickSort(array, left, right){
+    if((right - left) > 0){
+        var index = await partition(array, left, right);
+        if(left < (index - 1)){
+           await quickSort(array, left, index - 1)
+        }
+        if(right > index){
+            await quickSort(array, index, right)
+        }
+    }
 }
 
-/////////////////////////////////////////////////////////
-// "apply" and "filter" functions should go below here //
-/////////////////////////////////////////////////////////
+// TODOs 4 & 5: Implement partition
+async function partition(array, left, right){
+    var pivot = array[Math.floor((right + left) / 2)].value;
+    while(left < right){
+        while(array[left].value < pivot){
+            left++
+        }
+        while(array[right].value > pivot){
+            right--
+        }
+        if(left < right){
+            swap(array, left, right);
+            updateCounter(quickCounter);
+            await sleep()
+        }
+    }
+    return left + 1
+}
 
-// TODO 1, 2, 3 & 5: Create the applyFilter function here
+// TODO 1: Implement swap
+function swap(array, i, j){
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+    drawSwap(array, i, j);
+}
 
+///////////////////////////////////////////////////////////////////////
+/////////////////////// YOUR WORK GOES ABOVE HERE /////////////////////
+///////////////////////////////////////////////////////////////////////
 
-// TODO 9 Create the applyFilterNoBackground function
+//////////////////////////// HELPER FUNCTIONS /////////////////////////
 
+// this function makes the program pause by SLEEP_AMOUNT milliseconds whenever it is called
+function sleep(){
+    return new Promise(resolve => setTimeout(resolve, SLEEP_AMOUNT));
+}
 
-// TODO 6: Create the keepInBounds function
+// This function draws the swap on the screen
+function drawSwap(array, i, j){
+    let element1 = array[i];
+    let element2 = array[j];
 
+    let temp = parseFloat($(element1.id).css("top")) + "px";
 
-// TODO 4: Create reddify filter function
+    $(element1.id).css("top", parseFloat($(element2.id).css("top")) + "px");
+    $(element2.id).css("top", temp);
+}
 
-
-// TODO 7 & 8: Create more filter functions
-
-
-// CHALLENGE code goes below here
+// This function updates the specified counter
+function updateCounter(counter){
+    $(counter).text("Move Count: " + (parseFloat($(counter).text().replace(/^\D+/g, '')) + 1));

@@ -67,7 +67,7 @@ $(document).ready(function(){
   *   - end the game!
   */
   function drawNewPacmanFrame() {
-    
+    meow
   }
 
   /* 
